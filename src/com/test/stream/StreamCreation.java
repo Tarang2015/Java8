@@ -1,6 +1,7 @@
 package com.test.stream;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -31,6 +32,32 @@ public class StreamCreation {
     Long count= integerStream1.filter(n->n%2==0).count();
     System.out.println(count);
 
+    System.out.println("------------");
 
+    List<String> memberNames = new ArrayList<>();
+    memberNames.add("Amitabh");
+    memberNames.add("Shekhar");
+    memberNames.add("Aman");
+    memberNames.add("Rahul");
+    memberNames.add("Shahrukh");
+    memberNames.add("Salman");
+    memberNames.add("Yana");
+    memberNames.add("Lokesh");
+    Stream<String> names=memberNames.stream();
+    names.filter(s->s.startsWith("A"))
+        .map(String::toUpperCase)
+        .collect(Collectors.toList())
+        .forEach(System.out::println);
+    System.out.println("------------");
+    Stream<String> names1=memberNames.stream();
+    names1.sorted()
+        .map(String::toUpperCase)
+        .collect(Collectors.toList())
+        .forEach(System.out::println);
+    System.out.println("------------");
+    Stream<String> names2=memberNames.stream();
+    names2.sorted(Comparator.reverseOrder()).map(String::toUpperCase)
+        .collect(Collectors.toList())
+        .forEach(System.out::println);
   }
 }
